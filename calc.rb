@@ -73,6 +73,8 @@ end
         ind = gstr.index('+')
         left = ''
         right = ''
+
+
         while ints.include?(gstr[ind-=1]) && ind>=0 do
           left.insert(0, gstr[ind])
         end

@@ -65,6 +65,9 @@ if fActs.include? sym
 end
 end
   gstr.each_char do |sym|
+    if gstr.index(sym) == 0
+      next
+end
     if pm.include? sym
       if sym == '+'
         ind = gstr.index('+')
@@ -96,18 +99,19 @@ end
         ind = gstr.index('-')
         left = ''
         right = ''
-        puts ind
+
         while ints.include?(gstr[ind-=1]) && ind>=0 do
 
           left.insert(0, gstr[ind])
         end
-        puts left
-        if pm.include?(gstr[ind]) && (left == '') && ind>=0
+
+        if pm.include?(gstr[ind]) && !(left == '') && ind>=0
           left.insert(0, gstr[ind])
           leftTr = ind
         else
           leftTr = ind+1
         end
+
         ind = gstr.index('-')
         while ind< (gstr.length-1) && ints.include?(gstr[ind+=1]) do
           right.insert(right.length, gstr[ind])
